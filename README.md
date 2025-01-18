@@ -1,5 +1,5 @@
-## Identifying Fake News Articles Using Network Properties and Graph Theory:
-# Introduction:
+# Identifying Fake News Articles Using Network Properties and Graph Theory:
+## Introduction:
 In the era of digital information, the detection of fake news has become a critical
 challenge facing our society. This project presents an innovative approach to this
 problem by leveraging network analysis and graph theory principles, departing from
@@ -15,21 +15,21 @@ with a 10% random sample, resulting in 8,504 articles for our analysis. The data
 included crucial information such as article titles, main text content, subject categories,
 and publication dates, providing a rich foundation for our network-based analysis
 approach.
-## Methodology and Technical Implementation :
-# Network Construction:
+# Methodology and Technical Implementation :
+## Network Construction:
 The cornerstone of our approach lies in transforming the news article dataset into a
 network representation. We constructed an undirected graph where each node
 represents an individual news article, and edges represent meaningful relationships
 between articles. The edge creation process was particularly crucial and implemented
 through two distinct mechanisms:
-# 1. Subject-Based Connections: 
+ 1. Subject-Based Connections: 
 We first established connections between articles
 sharing the same subject categories. This was implemented using pandas' group by
 functionality.
 This approach captures thematic relationships between articles, based on the
 assumption that legitimate news stories covering the same topic would naturally share
 certain structural patterns.
-# 2. Content Similarity Connections: 
+ 2. Content Similarity Connections: 
 We implemented a more sophisticated approach
 to capture subtle relationships between articles based on their title content
 The choice of TF-IDF (Term Frequency-Inverse Document Frequency) vectorization
@@ -39,17 +39,17 @@ words, and the cosine similarity metric was chosen for its effectiveness in meas
 text similarity regardless of document length. The similarity threshold of 0.1 was
 selected after experimentation to balance between capturing meaningful relationships
 and avoiding noise.
-## Feature Extraction and Selection:
+# Feature Extraction and Selection:
 After constructing the network, which resulted in 8,504 nodes and 2,029,142 edges, we
 extracted two primary network metrics for each article:
-# 1. Degree Centrality: 
+ 1. Degree Centrality: 
 This metric quantifies how well-connected an article is within the
 network. The implementation used NetworkX's built-in function:Degree centrality was
 chosen because it effectively captures how much an article relates to other stories in the
 network. The hypothesis was that genuine news would show more natural patterns of
 connectivity, while fake news might exhibit either unusually high connectivity (in the
 case of coordinated disinformation campaigns) or unusual isolation.
-# 2. Clustering Coefficient: 
+ 2. Clustering Coefficient: 
 This metric measures how much an article's neighbors are
 connected to each other:The clustering coefficient was selected to capture potential
 echo chamber effects, a phenomenon often associated with fake news propagation.
@@ -63,7 +63,7 @@ We chose Logistic Regression as our classification model for several reasons:
 4. Computational efficiency with large datasets
 The implementation involved standard train-test splitting and model fitting. You can view
 this in the code.
-## Results Analysis and Discussion:
+# Results Analysis and Discussion:
 The model achieved an overall accuracy of 81.74%, demonstrating the effectiveness of
 network properties in distinguishing between genuine and fake news. The detailed
 performance metrics reveal interesting patterns:
